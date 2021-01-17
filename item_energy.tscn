@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://item_temperature.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[node name="item_base" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="heat_radiation" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heat_radiation"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="heat_radiation" to="." method="_on_heat_radiation_body_entered"]
+[connection signal="body_exited" from="heat_radiation" to="." method="_on_heat_radiation_body_exited"]
